@@ -25,7 +25,6 @@
     <table class="table table-striped table-hover table-bordered mt-3">
       <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Address</th>
           <th scope="col">Email</th>
