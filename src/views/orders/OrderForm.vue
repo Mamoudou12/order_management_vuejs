@@ -2,7 +2,7 @@
   <form @submit.prevent="submitOrder">
     <!-- Conteneur pour les boutons en haut à droite -->
     <div class="form-buttons">
-      <button type="button" class="btn btn-secondary" @click="goHome">Return to Home</button>
+      <button type="button" class="btn btn-secondary" @click="goHome">Orders List</button>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
