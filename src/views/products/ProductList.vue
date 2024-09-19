@@ -1,164 +1,158 @@
 <template>
-    <div class="container mt-4">
-      <h1>List of Products</h1>
-  
-      <!-- Bouton pour ajouter un produit -->
-      <button
-        class="btn btn-primary mb-3"
-        data-bs-toggle="modal"
-        data-bs-target="#addProductModal"
-        style="float: right"
-      >
-        <i class="fas fa-plus"></i> Add Product
-      </button>
-  
-      <!-- Table des produits -->
-      <table class="table table-striped table-hover table-bordered mt-3">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Category</th>
-            <th scope="col">Barcode</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in products" :key="product.id">
-            <th scope="row">{{ product.id }}</th>
-            <td>{{ product.name }}</td>
-            <td>{{ product.description }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.stock }}</td>
-            <td>{{ product.category }}</td>
-            <td>{{ product.barcode }}</td>
-            <td>{{ product.status }}</td>
-            <td>
-              <!-- Bouton Voir (œil) -->
-              <button
-                class="btn btn-link btn-sm"
-                @click="selectProduct(product)"
-                data-bs-toggle="modal"
-                data-bs-target="#viewProductModal"
-                title="View Product"
-              >
-                <i class="fas fa-eye"></i>
-              </button>
-  
-              <!-- Bouton Modifier -->
-              <button
-                class="btn btn-link btn-sm"
-                @click="selectProduct(product)"
-                data-bs-toggle="modal"
-                data-bs-target="#editProductModal"
-                title="Edit Product"
-              >
+  <div class="container mt-4">
+    <h1>List of Products</h1>
+
+    <!-- Bouton pour ajouter un produit -->
+    <button
+      class="btn btn-primary mb-3"
+      data-bs-toggle="modal"
+      data-bs-target="#addProductModal"
+      style="float: right"
+    >
+      <i class="fas fa-plus"></i> Add New Product
+    </button>
+
+    <!-- Table des produits -->
+    <table class="table table-striped table-hover table-bordered mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Category</th>
+          <th scope="col">Barcode</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in products" :key="product.id">
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.stock }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.barcode }}</td>
+          <td>{{ product.status }}</td>
+          <td class="text-center">
+            <!-- Bouton Voir (œil) -->
+            <button
+              class="btn btn-link btn-sm"
+              @click="selectProduct(product)"
+              data-bs-toggle="modal"
+              data-bs-target="#viewProductModal"
+              title="View Product"
+            >
+              <i class="fas fa-eye"></i>
+            </button>
+
+            <!-- Bouton Modifier -->
+            <button
+              class="btn btn-link btn-sm"
+              @click="selectProduct(product)"
+              data-bs-toggle="modal"
+              data-bs-target="#editProductModal"
+              title="Edit Product"
+            >
               <i class="fas fa-edit" style="color: green"></i>
-              </button>
-  
-              <!-- Bouton Supprimer avec alerte -->
-              <button
-                class="btn btn-link btn-sm"
-                @click="confirmDelete(product)"
-                title="Delete Product"
-              >
+            </button>
+
+            <!-- Bouton Supprimer avec alerte -->
+            <button
+              class="btn btn-link btn-sm"
+              @click="confirmDelete(product)"
+              title="Delete Product"
+            >
               <i class="fas fa-trash" style="color: red"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <!-- Modale pour ajouter un produit -->
-      <ProductModal
-        :product="newProduct"
-        @save="addProduct"
-        modal-id="addProductModal"
-        title="Add Product"
-      />
-  
-      <!-- Modale pour afficher les détails du produit -->
-      <div
-        class="modal fade"
-        id="viewProductModal"
-        tabindex="-1"
-        aria-labelledby="viewProductModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="viewProductModalLabel">View Product</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-6">
-                  <strong>ID:</strong> {{ selectedProduct.id }}
-                </div>
-                <div class="col-6">
-                  <strong>Name:</strong> {{ selectedProduct.name }}
-                </div>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Modale pour ajouter un produit -->
+    <ProductModal
+      :product="newProduct"
+      @save="addProduct"
+      modal-id="addProductModal"
+      title="Add Product"
+    />
+
+    <!-- Modale pour afficher les détails du produit -->
+    <div
+      class="modal fade"
+      id="viewProductModal"
+      tabindex="-1"
+      aria-labelledby="viewProductModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="viewProductModalLabel">View Product</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-6">
+                <strong>Name:</strong> {{ selectedProduct.name }}
               </div>
-              <div class="row mt-3">
-                <div class="col-6">
-                  <strong>Description:</strong> {{ selectedProduct.description }}
-                </div>
-                <div class="col-6">
-                  <strong>Price:</strong> {{ selectedProduct.price }}
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-6">
-                  <strong>Stock:</strong> {{ selectedProduct.stock }}
-                </div>
-                <div class="col-6">
-                  <strong>Category:</strong> {{ selectedProduct.category }}
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-6">
-                  <strong>Barcode:</strong> {{ selectedProduct.barcode }}
-                </div>
-                <div class="col-6">
-                  <strong>Status:</strong> {{ selectedProduct.status }}
-                </div>
+              <div class="col-6">
+                <strong>Description:</strong> {{ selectedProduct.description }}
               </div>
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+            <div class="row mt-3">
+              <div class="col-6">
+                <strong>Price:</strong> {{ selectedProduct.price }}
+              </div>
+              <div class="col-6">
+                <strong>Stock:</strong> {{ selectedProduct.stock }}
+              </div>
             </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <strong>Category:</strong> {{ selectedProduct.category }}
+              </div>
+              <div class="col-6">
+                <strong>Barcode:</strong> {{ selectedProduct.barcode }}
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <strong>Status:</strong> {{ selectedProduct.status }}
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
-  
-      <!-- Modale pour éditer un produit -->
-      <ProductModal
-        :product="selectedProduct"
-        @save="updateProduct"
-        modal-id="editProductModal"
-        title="Edit Product"
-        
-      />
     </div>
-  </template>
-  
-  
-  <script setup>
+
+    <!-- Modale pour éditer un produit -->
+    <ProductModal
+      :product="selectedProduct"
+      @save="updateProduct"
+      modal-id="editProductModal"
+      title="Edit Product"
+    />
+  </div>
+</template>
+
+<script setup>
 import { ref } from 'vue';
 import ProductModal from './ProductModal.vue';
 
@@ -166,7 +160,7 @@ import ProductModal from './ProductModal.vue';
 const products = ref([
   {
     id: 1,
-    name: 'Product 1',
+    name: 'Product 001',
     description: 'Description of Product 1',
     price: 100.0,
     stock: 10,
@@ -176,7 +170,7 @@ const products = ref([
   },
   {
     id: 2,
-    name: 'Product 2',
+    name: 'Product 002',
     description: 'Description of Product 2',
     price: 150.0,
     stock: 5,
@@ -184,18 +178,18 @@ const products = ref([
     barcode: '0987654321',
     status: 'Unavailable',
   },
+  {
+    id: 2,
+    name: 'Product 003',
+    description: 'Description of Product 2',
+    price: 250.0,
+    stock: 10,
+    category: 'Category 3',
+    barcode: '0987654325',
+    status: 'Available',
+  },
 ]);
 
-// Nouveau produit pour ajout
-const newProduct = ref({
-  name: '',
-  description: '',
-  price: 0,
-  stock: 0,
-  category: '',
-  barcode: '',
-  status: 'Available',
-});
 
 // Produit sélectionné pour voir, éditer ou supprimer
 const selectedProduct = ref({});
@@ -252,8 +246,6 @@ const closeModal = (modalId) => {
 };
 </script>
 
-  
-  <style scoped>
-  /* Ajoutez des styles si nécessaire */
-  </style>
-  
+<style scoped>
+/* Ajoutez des styles si nécessaire */
+</style>

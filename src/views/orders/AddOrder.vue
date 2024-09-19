@@ -1,7 +1,6 @@
 <!-- AddOrder.vue -->
 <template>
-    <div class="container mt-4">
-      <h2>Add New Order</h2>
+    <div class="container">
       <OrderForm @submitOrder="handleAddOrder" />
     </div>
   </template>

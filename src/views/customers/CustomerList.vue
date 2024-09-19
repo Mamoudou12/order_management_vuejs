@@ -9,7 +9,7 @@
       data-bs-target="#addCustomerModal"
       style="float: right"
     >
-      <i class="fas fa-plus"></i> Add Customer
+      <i class="fas fa-plus"></i> Add New Customer
     </button>
 
     <!-- Modal pour ajouter un client -->
@@ -34,12 +34,11 @@
       </thead>
       <tbody>
         <tr v-for="customer in customers" :key="customer.id">
-          <th scope="row">{{ customer.id }}</th>
           <td>{{ customer.name }}</td>
           <td>{{ customer.address }}</td>
           <td>{{ customer.email }}</td>
           <td>{{ customer.phone }}</td>
-          <td>
+          <td class="text-center">
             <!-- Bouton Voir -->
             <button
               class="btn btn-link btn-sm"
@@ -133,17 +132,45 @@ import CustomerModal from "./CustomerModal.vue";
 const customers = ref([
   {
     id: 1,
-    name: "John Doe",
-    address: "123 Elm St",
-    email: "john@example.com",
-    phone: "555-1234",
+    name: "Ousmane Ly",
+    address: "Riyad",
+    email: "ou@example.com",
+    phone: "48-65-98-32",
   },
   {
     id: 2,
-    name: "Jane Smith",
-    address: "456 Oak St",
-    email: "jane@example.com",
-    phone: "555-5678",
+    name: "Ag",
+    address: "ksar",
+    email: "ag@example.com",
+    phone: "42-59-76-32",
+  },
+  {
+    id:3,
+    name: "Fatimata",
+    address: "Sebkha",
+    email: "fa@example.com",
+    phone: "43-51-76-32",
+  },
+  {
+    id:4,
+    name: "Aichettou",
+    address: "toujinine",
+    email: "ac@example.com",
+    phone: "44-31-76-32",
+  },
+  {
+    id:5,
+    name: "Oumar",
+    address: "El mina",
+    email: "ou@example.com",
+    phone: "42-21-36-32",
+  },
+  {
+    id:6,
+    name: "Thimbo",
+    address: "Riyad",
+    email: "th@example.com",
+    phone: "46-11-86-52",
   },
 ]);
 

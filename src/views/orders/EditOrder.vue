@@ -1,6 +1,5 @@
 <template>
-    <div class="container mt-4">
-      <h2>{{ isEditMode ? 'Edit Order' : 'Add New Order' }}</h2>
+    <div class="container">
       <OrderForm :existingOrder="order" @submitOrder="handleSubmitOrder" />
     </div>
   </template>

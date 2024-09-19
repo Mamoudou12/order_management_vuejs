@@ -18,18 +18,18 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <router-link class="nav-link" to="/customers">
-                <i class="bi bi-people-fill"></i>
+                <i class="fa-solid fa-users"></i>
                 Customers
               </router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/products">
-                <i class="bi bi-box"></i>
+                <i class="fa-solid fa-basket-shopping"></i>
                 Products
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/orders"> <i class="bi bi-clipboard-data"></i> Orders </router-link>
+              <router-link class="nav-link" to="/orders"> <i class="fa-solid fa-cart-arrow-down"></i> Orders </router-link>
             </li>
           </ul>
         </div>
@@ -47,5 +47,9 @@
 <style>
 .navbar {
   margin-bottom: 20px;
+}
+
+.navbar ul {
+  margin-left: 110px;
 }
 </style>
