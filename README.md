@@ -27,6 +27,9 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 ```bash
 git clone https://github.com/Mamoudou12/order_management_vuejs.git
 ```
+```bash
+cd order_management_vuejs
+```
 2. Installez les dépendances :
 ```bash
 npm install
