@@ -42,7 +42,22 @@
 
 <script setup>
 // No imports needed here, router is used in router-view
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', function () {
+      // Supprime la classe 'focused' de tous les liens
+      navLinks.forEach((link) => link.classList.remove('focused'));
+      // Ajoute la classe 'focused' au lien cliqué
+      this.classList.add('focused');
+    });
+  });
+});
 </script>
+
 
 <style>
 .navbar {
@@ -51,5 +66,24 @@
 
 .navbar ul {
   margin-left: 110px;
+}
+
+.navbar-nav .nav-link {
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+  padding: 10px 15px; /* Pour donner plus de marge autour du texte */
+  border-radius: 10px; /* Applique un arrondi sur les bords */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #d4e6f1; 
+  color: white; 
+  border-radius: 10px;
+}
+
+
+.navbar-nav .nav-link.focused {
+  background-color: #007bff; 
+  color: white;
+  border-radius: 10px; 
 }
 </style>
