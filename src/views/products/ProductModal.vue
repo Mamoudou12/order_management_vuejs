@@ -36,7 +36,7 @@
               class="btn btn-primary"
               @click="handleSave"
             >
-              {{ isEdit ? 'Update' : 'Add' }}
+              {{ isEdit ? 'Update' : 'Confirm' }}
             </button>
             <button
               v-if="isDelete"

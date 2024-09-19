@@ -1,3 +1,4 @@
+<!-- src/App.vue -->
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,29 +18,31 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <router-link class="nav-link" to="/customers">
-                <i class="bi bi-people-fill"></i> Customers
+                <i class="bi bi-people-fill"></i>
+                Customers
               </router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/products">
-                <i class="bi bi-box"></i> Products
+                <i class="bi bi-box"></i>
+                Products
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/orders">
-                <i class="bi bi-clipboard-data"></i> Orders
-              </router-link>
+              <router-link class="nav-link" to="/orders"> <i class="bi bi-clipboard-data"></i> Orders </router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+// No imports needed here, router is used in router-view
+</script>
 
 <style>
 .navbar {
