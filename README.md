@@ -1,4 +1,4 @@
-# Order Management-Fronend
+# Order Management-Frontend
 ## Description
 Ce projet est le frontend dynamique d'une application  construite avec Vue.js, conçue pour gérer et afficher les commandes, les client et les produits. L'application est inspirée d'une application concurrente et se concentre sur la fourniture d'une interface utilisateur conviviale pour visualiser, éditer et supprimer des commandes. Elle ne comprend pas d'intégration backend ni de fonctionnalités CRUD complètes.
 
