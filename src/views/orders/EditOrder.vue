@@ -1,7 +1,10 @@
 <template>
+  <h1 class="text-center">Edit Order</h1>
     <div class="container">
       <OrderForm :existingOrder="order" @submitOrder="handleSubmitOrder" />
+      
     </div>
+    
   </template>
   
   <script setup>

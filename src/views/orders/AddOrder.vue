@@ -1,5 +1,6 @@
 <!-- AddOrder.vue -->
 <template>
+    <h1 class="text-center">Create New Order</h1>
     <div class="container">
       <OrderForm @submitOrder="handleAddOrder" />
     </div>
