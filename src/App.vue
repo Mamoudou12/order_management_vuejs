@@ -17,19 +17,37 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link" to="/customers">
+              <router-link
+                class="nav-link"
+                :class="{ focused: activeRoute === 'customers' }"
+                to="/customers"
+                @click="setActiveRoute('customers')"
+              >
                 <i class="fa-solid fa-users"></i>
                 Customers
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/products">
+              <router-link
+                class="nav-link"
+                :class="{ focused: activeRoute === 'products' }"
+                to="/products"
+                @click="setActiveRoute('products')"
+              >
                 <i class="fa-solid fa-basket-shopping"></i>
                 Products
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/orders"> <i class="fa-solid fa-cart-arrow-down"></i> Orders </router-link>
+              <router-link
+                class="nav-link"
+                :class="{ focused: activeRoute === 'orders' }"
+                to="/orders"
+                @click="setActiveRoute('orders')"
+              >
+                <i class="fa-solid fa-cart-arrow-down"></i>
+                Orders
+              </router-link>
             </li>
           </ul>
         </div>
@@ -41,20 +59,14 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { ref } from 'vue';
 
-onMounted(() => {
-  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+const activeRoute = ref('customers'); 
 
-  navLinks.forEach((link) => {
-    link.addEventListener('click', function () {
-      navLinks.forEach((link) => link.classList.remove('focused'));
-      this.classList.add('focused');
-    });
-  });
-});
+const setActiveRoute = (route) => {
+  activeRoute.value = route;
+};
 </script>
-
 
 <style>
 .navbar {

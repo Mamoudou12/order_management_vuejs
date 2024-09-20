@@ -2,7 +2,9 @@
   <form @submit.prevent="submitOrder">
     <!-- Conteneur pour les boutons en haut à droite -->
     <div class="form-buttons">
-      <button type="button" class="btn btn-secondary" @click="goHome">Orders List</button>
+      <button type="button" class="btn btn-secondary" @click="goHome">
+        Orders List
+      </button>
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
@@ -12,22 +14,46 @@
       <div class="left">
         <div class="col-md-12 mb-3">
           <label for="orderDate" class="form-label">Date</label>
-          <input type="date" v-model="order.date" class="form-control" required>
+          <input
+            id="orderDate"
+            type="date"
+            v-model="order.date"
+            class="form-control"
+            required
+          />
         </div>
         <div class="col-md-12 mb-3">
           <label for="customerName" class="form-label">Customer name</label>
-          <input type="text" v-model="order.customer_name" class="form-control" required>
+          <input
+            id="customerName"
+            type="text"
+            v-model="order.customer_name"
+            class="form-control"
+            required
+          />
         </div>
       </div>
       <!-- Section droite (Adresse de livraison, numéro de suivi, statut) -->
       <div class="right">
         <div class="col-md-12 mb-3">
           <label for="deliveryAddress" class="form-label">Delivery Address</label>
-          <input type="text" v-model="order.delivery_address" class="form-control" required>
+          <input
+            id="deliveryAddress"
+            type="text"
+            v-model="order.delivery_address"
+            class="form-control"
+            required
+          />
         </div>
         <div class="col-md-12 mb-3">
           <label for="trackNumber" class="form-label">Track Number</label>
-          <input type="text" v-model="order.track_number" class="form-control" required>
+          <input
+            id="trackNumber"
+            type="text"
+            v-model="order.track_number"
+            class="form-control"
+            required
+          />
         </div>
         <div class="col-md-12 mb-3">
           <label for="status" class="form-label">Order Status</label>
@@ -54,52 +80,74 @@
       <tbody>
         <tr v-for="(detail, index) in orderDetails" :key="index">
           <td>
-            <input type="text" v-model="detail.product_id" class="form-control" placeholder="Enter Product ID" required>
+            <div class="select-container">
+              <select class="form-control" v-model="detail.product_id" id="productSelect">
+                <option value="" disabled selected>Select Product</option>
+                <option value="Product A">Product A</option>
+                <option value="Product B">Product B</option>
+                <option value="Product C">Product C</option>
+                <i class="fa-solid fa-chevron-down arrow-icon"></i>
+              </select>
+            </div>
           </td>
           <td>
-            <input type="number" v-model="detail.quantity" class="form-control" placeholder="Quantity" required>
+            <input
+              type="number"
+              v-model="detail.quantity"
+              class="form-control"
+              placeholder="Quantity"
+              required
+            />
           </td>
           <td>
-            <input type="number" step="0.01" v-model="detail.price" class="form-control" placeholder="Price" required>
+            <input
+              type="number"
+              step="0.01"
+              v-model="detail.price"
+              class="form-control"
+              placeholder="Price"
+              required
+            />
           </td>
           <td>
-            <button type="button" class="btn btn-danger" @click="removeDetail(index)">Remove</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="removeDetail(index)"
+            >
+              Remove
+            </button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <!-- Ajouter un autre produit -->
-    <button type="button" class="btn btn-success mt-3" @click="addDetail">Add New Detail</button>
-
-    <!-- Bouton pour soumettre -->
-    <div class="d-grid gap-2 mt-4">
-      <!-- Supprimer ce bouton car il est maintenant en haut à droite -->
-    </div>
+    <button type="button" class="btn btn-success mt-3" @click="addDetail">
+      Add New Detail
+    </button>
   </form>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 // Données de la commande (initialisation)
 const order = ref({
-  date: '',
-  customer_name: '',
-  delivery_address: '',
-  track_number: '',
-  status: '',
+  date: "",
+  customer_name: "",
+  delivery_address: "",
+  track_number: "",
+  status: "",
 });
 
 // Détails de la commande
-const orderDetails = ref([
-  { product_id: '', quantity: 1, price: 0.00 },
-]);
+const orderDetails = ref([{ product_id: "", quantity: 1, price: 0.0 }]);
 
 // Fonction pour ajouter un nouveau détail de produit
 const addDetail = () => {
-  orderDetails.value.push({ product_id: '', quantity: 1, price: 0.00 });
+  orderDetails.value.push({ product_id: "", quantity: 1, price: 0.0 });
 };
 
 // Fonction pour supprimer un détail
@@ -117,7 +165,7 @@ const submitOrder = () => {
     ...order.value,
     details: orderDetails.value,
   };
-  console.log('Order Submitted:', newOrder);
+  console.log("Order Submitted:", newOrder);
 };
 
 // Initialiser le routeur
@@ -125,7 +173,7 @@ const router = useRouter();
 
 // Fonction pour retourner à la page d'accueil
 const goHome = () => {
-  router.push({ name: 'OrderList' });
+  router.push({ name: "OrderList" });
 };
 </script>
 
@@ -136,7 +184,8 @@ const goHome = () => {
   justify-content: space-between;
 }
 
-.left, .right {
+.left,
+.right {
   flex: 1;
   margin-right: 20px;
 }
@@ -146,7 +195,8 @@ const goHome = () => {
   .container {
     flex-direction: column;
   }
-  .left, .right {
+  .left,
+  .right {
     margin-right: 0;
     margin-bottom: 20px;
   }
