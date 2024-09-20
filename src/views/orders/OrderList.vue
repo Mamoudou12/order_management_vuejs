@@ -2,7 +2,7 @@
   <div class="container mt-4">
     <h1>List of Orders</h1>
     <div class="text-end mb-3">
-      <!-- Remplacer le div par un bouton -->
+      <!-- Bouton pour ajouter une nouvelle commande -->
       <router-link to="/orders/new">
         <button class="btn btn-primary">
           <i class="fas fa-plus"></i> Add New Order
@@ -30,14 +30,10 @@
           <td>{{ order.track_number }}</td>
           <td>{{ order.status }}</td>
           <td class="text-center">
-            <!-- Bouton Voir -->
-            <button 
-              class="btn btn-link btn-sm" 
-              @click="selectOrder(order)" 
-              data-bs-toggle="modal" 
-              data-bs-target="#viewOrderModal">
+            <!-- Bouton Voir avec redirection vers la page de détails -->
+            <router-link :to="`/orders/${index}`" class="btn btn-link btn-sm">
               <i class="fas fa-eye"></i>
-            </button>
+            </router-link>
 
             <!-- Bouton Éditer avec redirection -->
             <router-link :to="`/orders/edit/${index}`" class="btn btn-link btn-sm" title="Edit Order">
@@ -52,47 +48,6 @@
         </tr>
       </tbody>
     </table>
-
-    <!-- Modal pour afficher les détails de la commande -->
-    <div 
-      class="modal fade" 
-      id="viewOrderModal" 
-      tabindex="-1" 
-      aria-labelledby="viewOrderModalLabel" 
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="viewOrderModalLabel">Order Details</h5>
-            <button 
-              type="button" 
-              class="btn-close" 
-              data-bs-dismiss="modal" 
-              aria-label="Close"></button>
-          </div>
-          <div class="modal-body" v-if="selectedOrder">
-            <p><strong>Date:</strong> {{ formatDate(selectedOrder.date) }}</p>
-            <p><strong>Customer:</strong> {{ selectedOrder.customer }}</p>
-            <p><strong>Delivery Address:</strong> {{ selectedOrder.delivery_address }}</p>
-            <p><strong>Track Number:</strong> {{ selectedOrder.track_number }}</p>
-            <p><strong>Status:</strong> {{ selectedOrder.status }}</p>
-
-            <h6>Order Details:</h6>
-            <ul>
-              <li v-for="item in selectedOrder.details" :key="item.product_id">
-                Product: {{ item.product_id }} - Quantity: {{ item.quantity }} - Price: ${{ item.price }}
-              </li>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button 
-              type="button" 
-              class="btn btn-secondary" 
-              data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -124,6 +79,7 @@ const confirmDelete = (order) => {
     }
   }
 };
+
 
 // Fonction pour formater la date
 const formatDate = (dateString) => {

@@ -104,7 +104,11 @@ const addDetail = () => {
 
 // Fonction pour supprimer un détail
 const removeDetail = (index) => {
-  orderDetails.value.splice(index, 1);
+  if (orderDetails.value.length > 1) {
+    orderDetails.value.splice(index, 1);
+  } else {
+    alert("Vous devez avoir au moins une détail de commande.");
+  }
 };
 
 // Fonction pour soumettre la commande

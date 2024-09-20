@@ -41,7 +41,6 @@
 </template>
 
 <script setup>
-// No imports needed here, router is used in router-view
 import { onMounted } from 'vue';
 
 onMounted(() => {
@@ -49,9 +48,7 @@ onMounted(() => {
 
   navLinks.forEach((link) => {
     link.addEventListener('click', function () {
-      // Supprime la classe 'focused' de tous les liens
       navLinks.forEach((link) => link.classList.remove('focused'));
-      // Ajoute la classe 'focused' au lien cliqué
       this.classList.add('focused');
     });
   });
@@ -62,6 +59,8 @@ onMounted(() => {
 <style>
 .navbar {
   margin-bottom: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .navbar ul {
@@ -69,21 +68,30 @@ onMounted(() => {
 }
 
 .navbar-nav .nav-link {
-  transition: background-color 0.3s ease, border-radius 0.3s ease;
-  padding: 10px 15px; /* Pour donner plus de marge autour du texte */
-  border-radius: 10px; /* Applique un arrondi sur les bords */
+  transition: background-color 0.3s ease, border-radius 0.3s ease, color 0.3s ease; 
+  padding: 10px 15px; 
+  border-radius: 10px; 
+  font-size: 1.1rem; 
+  color: #333; 
 }
 
 .navbar-nav .nav-link:hover {
   background-color: #d4e6f1; 
-  color: white; 
+  color: #007bff; 
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
-
 
 .navbar-nav .nav-link.focused {
   background-color: #007bff; 
   color: white;
   border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajout d'espacement autour des icônes */
+.navbar-nav .nav-link i {
+  margin-right: 8px; 
+  font-size: 1.2rem; 
 }
 </style>
