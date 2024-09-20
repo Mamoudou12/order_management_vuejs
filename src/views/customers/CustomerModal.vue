@@ -19,13 +19,13 @@
             </div>
             <div class="mb-3">
               <label for="customerAddress" class="form-label">Address</label>
-              <input
+               <textarea
                 type="text"
                 id="customerAddress"
                 class="form-control"
                 v-model="customer.address"
                 :readonly="readonly"
-              />
+                ></textarea>
             </div>
             <div class="mb-3">
               <label for="customerEmail" class="form-label">Email</label>
