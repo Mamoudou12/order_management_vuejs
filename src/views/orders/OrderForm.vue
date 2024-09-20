@@ -207,6 +207,7 @@ const goHome = () => {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 20px;
+  margin-right: 33px;
 }
 
 .form-buttons .btn {

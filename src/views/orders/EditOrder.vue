@@ -1,6 +1,6 @@
 <template>
-  <h1 class="text-center">Edit Order</h1>
     <div class="container">
+      <h1>Edit Order</h1>
       <OrderForm :existingOrder="order" @submitOrder="handleSubmitOrder" />
       
     </div>

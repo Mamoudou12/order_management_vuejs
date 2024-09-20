@@ -59,9 +59,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
 
-const activeRoute = ref('customers'); 
+const activeRoute = ref("");
 
 const setActiveRoute = (route) => {
   activeRoute.value = route;
@@ -72,7 +72,7 @@ const setActiveRoute = (route) => {
 .navbar {
   margin-bottom: 20px;
   background-color: #f8f9fa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul {
@@ -80,30 +80,31 @@ const setActiveRoute = (route) => {
 }
 
 .navbar-nav .nav-link {
-  transition: background-color 0.3s ease, border-radius 0.3s ease, color 0.3s ease; 
-  padding: 10px 15px; 
-  border-radius: 10px; 
-  font-size: 1.1rem; 
-  color: #333; 
+  transition: background-color 0.3s ease, border-radius 0.3s ease,
+    color 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: #333;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: #d4e6f1; 
-  color: #007bff; 
+  background-color: #d4e6f1;
+  color: #007bff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav .nav-link.focused {
-  background-color: #007bff; 
+  background-color: #007bff;
   color: white;
-  border-radius: 10px; 
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Ajout d'espacement autour des icônes */
 .navbar-nav .nav-link i {
-  margin-right: 8px; 
-  font-size: 1.2rem; 
+  margin-right: 8px;
+  font-size: 1.2rem;
 }
 </style>
